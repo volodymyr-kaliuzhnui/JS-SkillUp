@@ -9,7 +9,7 @@ let numDroid = prompt('Сколько дроидов Вы хотите купи�
 let totalPrice;
 let balance;
 
-if (numDroid == null) {
+if (!numDroid) {
     console.log ('Отменено пользователем!')
 } else {
     totalPrice = pricePerDroid * numDroid;

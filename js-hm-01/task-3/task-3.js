@@ -8,7 +8,7 @@ let authentication = prompt('Введіть Ваш пароль');
 
 console.log(authentication);
 
-if (authentication == null) {
+if (!authentication) {
     message = 'Відмінено користувачем';
 } else if (authentication === ADMIN_PASSWORD) {
     message = 'Вітаю Адміністратор!'
