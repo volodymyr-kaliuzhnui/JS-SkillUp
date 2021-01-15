@@ -13,7 +13,7 @@ if (!authentication) {
 } else if (authentication === ADMIN_PASSWORD) {
     message = 'Вітаю Адміністратор!'
 } else {
-    message = 'Доступ заборонено! Неправильний пароль!'
+    message = 'Доступ заборонено! Неправильний пароль'
 }
 
 alert(message);

@@ -1,8 +1,8 @@
 let rating = prompt('Введіть оцінку студента');
 
 
-if (rating == '' || isNaN(rating) || rating >= 101) {
-    alert('Введено невірні наді')
+if (rating === '' || isNaN(rating) || rating >= 101) {
+    alert('Введено невірні наді');
 } else {
     if (rating >= 89 && rating <=100) {
         alert(`У болонському форматі оцінка студента це A`)
@@ -18,3 +18,4 @@ if (rating == '' || isNaN(rating) || rating >= 101) {
         alert(`У болонському форматі оцінка студента це F`)
     }
 }
+console.log('my name');

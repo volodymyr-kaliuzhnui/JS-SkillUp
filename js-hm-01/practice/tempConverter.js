@@ -3,7 +3,7 @@
 let tempCel = prompt('Введіть число температури градусів Celsius');
 let tempFahr;
 
-if (tempCel == '' || isNaN(tempCel)) {
+if (tempCel === '' || isNaN(tempCel)) {
     alert('Введені дані не коректні!')
 } else {
     tempFahr = (Number(tempCel)*1.8) + 32;

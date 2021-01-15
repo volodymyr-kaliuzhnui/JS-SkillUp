@@ -1,4 +1,5 @@
 const logItems = function(array) {
+    let item;
     for (item of array) {
         console.log(`Номер ${array.indexOf(item) + 1}, значення ${item}`);
     }

@@ -1,10 +1,8 @@
 const formatString = function(string) {
-    if (string.length <= 40) {
-        return string
-    } else {
-        return string.substr(0, 40) + ' ...'
-    }
+    let result =  (string.length <= 40) ? string : string.substr(0, 40) + ' ...';
+    return result;
 };
+
 
 /*
  * Вызовы функции для проверки работоспособности твоей реализации.

@@ -24,7 +24,7 @@ const isLoginUnique = function(allLogins, login) {
 const addLogin = function(allLogins, login) {
     let valid = isLoginValid(login);
     if (!valid) {
-        console.log('Логін повинен містити більше 4 символів і менше 16 включно')
+        console.log('Логін повинен містити більше 4 символів і менше 16 включно!!')
     }
 
     let unique = isLoginUnique(allLogins, login);
