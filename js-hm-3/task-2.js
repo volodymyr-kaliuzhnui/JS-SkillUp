@@ -1,9 +1,5 @@
 const countProps = function(obj) {
-    let result = 0;
-    for (let kay in obj) {
-        result +=1
-    }
-    return result;
+    return Object.keys(obj).length
 };
 
 console.log(countProps({})); // 0
