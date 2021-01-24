@@ -16,15 +16,17 @@ const showDeliveryStatus = function (orders) {
         if (deliveryProgress === 100) {
             result.push('Done');
         }
-        if (deliveryProgress < 100 && !deliveryProgress) {
+
+        if (deliveryProgress < 100 && !!deliveryProgress) {
             result.push('In progress');
         }
+
         if (!deliveryProgress) {
             result.push('Ready for delivery');
         }
     }
-    return result.join(', ');
+    return result.join(', ')
 }
 
 console.log(showDeliveryStatus(ordersA))
-console.log(showDeliveryStatus(ordersB))
+// console.log(showDeliveryStatus(ordersB))
