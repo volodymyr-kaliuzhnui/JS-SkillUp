@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--    <article id="m4">-->
+<!--        <h2>Module 4</h2>-->
+<!--        <ol>-->
+<!--            <li>-->
+<!--                <p>-->
+<!--                    Написати метод <strong> every </strong>який приймає масив і ф-ю-->
+<!--                    callback (в якій ми будемо робити різні перевірки) Цей метод-->
+<!--                    повертає true якщо кожен елемент масиву пройшов перевірку з-->
+<!--                    callback. Якщо хоча б один елемент не проходить перевірку то-->
+<!--                    повертає false, callback приймає елемент масиву-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    <code>-->
+<!--                        every([1,2,3,4,5], callback) // true (перевіряємо чи елементи <-->
+<!--                        10)-->
+<!--                        <br/>-->
+<!--                        every([2,45,67,34], callback) // false (перевіряємо чи елементи-->
+<!--                        > 10)-->
+<!--                    </code>-->
+<!--                </p>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <p>-->
+<!--                    Написати метод <strong> some </strong> який приймає масив і ф-ю-->
+<!--                    callback. Цей метод поверне true якщо хоча б один елемент масиву-->
+<!--                    пройже перевірку з callback callback приймає елемент масиву-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    <code>-->
+<!--                        some([1,2,3,23,5], callback) // true (перевіряємо чи елементи >-->
+<!--                        10)-->
+<!--                        <br/>-->
+<!--                        some([12,45,67,34], callback) // false (перевіряємо чи елементи-->
+<!--                        < 10)-->
+<!--                    </code>-->
+<!--                </p>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <p>-->
+<!--                    Створити метод <strong> compact </strong> який приймає масив і-->
+<!--                    вертає новий де відсутні будь-які значення що при переведені в-->
+<!--                    bool дають false-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    <code>-->
+<!--                        compact([1,0,'', null, 'Hello']) // [1,'Hello']-->
+<!--                    </code>-->
+<!--                </p>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <p>-->
+<!--                    Написати ф-ю <strong> showDeliveryStatus </strong> яка приймає-->
+<!--                    масив і виводить на екран інформацію про доставку товара всіх-->
+<!--                    типів.-->
+<!--                </p>-->
+<!--                <p>Якщо прогрес доставки 100 показувати строку "Done"</p>-->
+<!--                <p>Якщо прогрес доставки < 100 показувати строку "In progress"</p>-->
+<!--                <p>-->
+<!--                    Якщо прогрес доставки null показувати строку "Ready for delivery"-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    <code>-->
+<!--                        const ordersA = [-->
+<!--                        <br/>-->
+<!--                        { name: 'Phone', price: 12300, deliveryProgress: 50, type: 0 },-->
+<!--                        <br/>-->
+<!--                        { name: 'Computer', price: 230000, deliveryProgress: 100, type:-->
+<!--                        1 },-->
+<!--                        <br/>-->
+<!--                        { name: 'Tablet', price: 5000, deliveryProgress: null, type: 2-->
+<!--                        }, <br/>-->
+<!--                        ]-->
+<!--                    </code>-->
+<!--                    <br/>-->
+<!--                    <br/>-->
+<!--                    <code>-->
+<!--                        const ordersB = [-->
+<!--                        <br/>-->
+<!--                        { name: 'Phone', price: 12300, deliveryProgress: 50, type: 0 },-->
+<!--                        <br/>-->
+<!--                        { name: 'Tablet', price: 5000, deliveryProgress: null, type: 2-->
+<!--                        },-->
+<!--                        <br/>-->
+<!--                        ]-->
+<!--                    </code>-->
+<!--                    <br/>-->
+<!--                    <br/>-->
+<!--                    <code>-->
+<!--                        showDeliveryStatus(ordersA) // "In Progress", "Done", "Ready for-->
+<!--                        delivery"-->
+<!--                        <br/>-->
+<!--                        showDeliveryStatus(ordersB) // "In progress", "Not Ordered",-->
+<!--                        "Ready for delivery"-->
+<!--                    </code>-->
+<!--                </p>-->
+<!--            </li>-->
+<!--        </ol>-->
+<!--    </article>-->
+</body>
+</html>
