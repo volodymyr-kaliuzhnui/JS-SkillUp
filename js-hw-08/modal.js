@@ -110,7 +110,7 @@ class Gallery {
 
     readyGallery () {
         this.gallery.addEventListener('click', this.openModal.bind(this));
-        this.closeBtn.addEventListener('click', this.closeModal.bind(this))
+        this.closeBtn.addEventListener('click', this.closeModal.bind(this));
         galleryItems.forEach((img) => {
             let li = `
               <li class="gallery__item">
@@ -133,15 +133,15 @@ class Gallery {
     }
 
 
+
     openModal (event) {
         event.preventDefault();
         if (event.target.nodeName !== "IMG") return;
         this.index = this.originImg.indexOf(event.target.dataset.source);
         // console.log(this.index)
-        window.addEventListener('keydown', this.keyAction.bind(this));
         this.updateImg(this.index);
         this.lightbox.classList.add("is-open");
-
+        window.addEventListener('keydown', this.keyAction.bind(this));
     }
 
     updateImg (index) {
@@ -156,7 +156,6 @@ class Gallery {
 
 
     keyAction (event) {
-        event.preventDefault()
         if (event.code === 'Escape') {
             this.closeModal();
         }
@@ -166,6 +165,7 @@ class Gallery {
             this.index === this.originImg.length ? (this.index = 0) : this.index;
         }
         if (event.code === 'ArrowLeft') {
+            console.log(event.code)
             this.index -= 1;
             this.index < 0 ? (this.index = this.originImg.length -1) : this.index;
         }
