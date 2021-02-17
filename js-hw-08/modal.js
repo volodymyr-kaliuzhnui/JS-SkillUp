@@ -105,6 +105,9 @@ class Gallery {
         this.closeBtn = refs.closeBtn;
         this.originImg = [];
         this.index = 0
+        this.kayActionREF = this.keyAction.bind(this);
+        this.openModalREF = this.openModal.bind(this);
+        this.closeModalREF = this.closeModal.bind(this);
     }
 
 
@@ -137,9 +140,11 @@ class Gallery {
         event.preventDefault();
         if (event.target.nodeName !== "IMG") return;
         this.index = this.originImg.indexOf(event.target.dataset.source);
-        // console.log(this.index)
         this.updateImg(this.index);
         this.lightbox.classList.add("is-open");
+        window.addEventListener('keydown', this.kayActionREF);
+        this.closeBtn.addEventListener('click', this.closeModalREF);
+        this.overlay.addEventListener('click', this.closeModalREF);
     }
 
     updateImg (index) {
@@ -149,7 +154,10 @@ class Gallery {
     closeModal () {
         this.lightbox.classList.remove("is-open");
         this.lightboxImg.src = "";
-        window.removeEventListener('keydown', this.keyAction.bind(this));
+        this.lightbox.alt = '';
+        window.removeEventListener('keydown', this.kayActionREF);
+        this.overlay.removeEventListener('click', this.closeModalREF);
+        this.closeBtn.removeEventListener('click', this.closeModalREF);
     }
 
 
@@ -162,11 +170,9 @@ class Gallery {
         }
         if (event.code === 'ArrowRight') {
             this.index += 1;
-            // console.log(event.code)
             this.index === this.originImg.length ? (this.index = 0) : this.index;
         }
         if (event.code === 'ArrowLeft') {
-            // console.log(event.code)
             this.index -= 1;
             this.index < 0 ? (this.index = this.originImg.length -1) : this.index;
         }
@@ -174,10 +180,7 @@ class Gallery {
     }
 
     init () {
-        window.addEventListener('keydown', this.keyAction.bind(this));
-        this.gallery.addEventListener('click', this.openModal.bind(this));
-        this.closeBtn.addEventListener('click', this.closeModal.bind(this));
-        this.overlay.addEventListener('click', this.closeModal.bind(this));
+        this.gallery.addEventListener('click', this.openModalREF);
     }
 
 }
