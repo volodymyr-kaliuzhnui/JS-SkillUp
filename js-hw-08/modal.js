@@ -103,14 +103,13 @@ class Gallery {
         this.overlay = refs.overlay;
         this.lightboxImg = refs.lightboxImg;
         this.closeBtn = refs.closeBtn;
+        this.originImg = [];
+        this.index = 0
     }
 
-    originImg = [];
-    index = 0;
+
 
     readyGallery () {
-        this.gallery.addEventListener('click', this.openModal.bind(this));
-        this.closeBtn.addEventListener('click', this.closeModal.bind(this));
         galleryItems.forEach((img) => {
             let li = `
               <li class="gallery__item">
@@ -141,7 +140,6 @@ class Gallery {
         // console.log(this.index)
         this.updateImg(this.index);
         this.lightbox.classList.add("is-open");
-        window.addEventListener('keydown', this.keyAction.bind(this));
     }
 
     updateImg (index) {
@@ -155,25 +153,36 @@ class Gallery {
     }
 
 
+
+
+
     keyAction (event) {
         if (event.code === 'Escape') {
             this.closeModal();
         }
         if (event.code === 'ArrowRight') {
             this.index += 1;
-            console.log(event.code)
+            // console.log(event.code)
             this.index === this.originImg.length ? (this.index = 0) : this.index;
         }
         if (event.code === 'ArrowLeft') {
-            console.log(event.code)
+            // console.log(event.code)
             this.index -= 1;
             this.index < 0 ? (this.index = this.originImg.length -1) : this.index;
         }
         this.updateImg(this.index);
     }
 
+    init () {
+        window.addEventListener('keydown', this.keyAction.bind(this));
+        this.gallery.addEventListener('click', this.openModal.bind(this));
+        this.closeBtn.addEventListener('click', this.closeModal.bind(this));
+        this.overlay.addEventListener('click', this.closeModal.bind(this));
+    }
+
 }
 
 let gallery = new Gallery(refs);
+gallery.init();
 gallery.readyGallery();
 
