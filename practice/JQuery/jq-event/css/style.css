@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.container .text {
+    padding: 25px;
+    max-width: 300px;
+}
+
+.color-text {
+    color: #f44336;
+}
+
+.bg-color {
+    background: darkcyan;
+}

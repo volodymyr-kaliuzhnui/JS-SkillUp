@@ -1,6 +1,6 @@
 class Car {
     static getSpecs(car) {
-        console.log(`maxSpeed: ${car.maxSpeed}, speed: ${car.speed}, isOn: ${car.isOn}, distance: ${car.distance}, price: ${car.price}`)
+        console.log(`maxSpeed: ${car.maxSpeed}, speed: ${car.speed}, isOn: ${car.isOn}, distance: ${car.distance}, price: ${car._price}`)
 
     }
 
@@ -9,14 +9,14 @@ class Car {
         this.speed = 0;
         this.isOn = false
         this.distance = 0;
-        this.price = carInfo.price;
+        this._price = carInfo.price;
     }
 
-    get getPrice() {
+    get price() {
         return this._price;
     }
 
-    set setPrice(num) {
+    set price(num) {
         this._price = num;
     }
 
@@ -64,3 +64,4 @@ Car.getSpecs(mustang);
 console.log(mustang.price); // 2000
 mustang.price = 4000;
 console.log(mustang.price); // 4000
+console.log(mustang)
