@@ -9,82 +9,6 @@
 //     Это необходимо для того, чтобы при следующем открытии модального окна, пока грузится изображение, мы не видели предыдущее.
 
 
-// import galleryItems from "./gallery-items.js";
-
-// let refs = {
-//     gallery : document.querySelector('.js-gallery'),
-//     lightbox : document.querySelector('.js-lightbox'),
-//     overlay: document.querySelector('.lightbox__overlay'),
-//     lightboxImg : document.querySelector('.lightbox__image'),
-//     closeBtn: document.querySelector('.lightbox__button')
-// }
-
-// let { gallery, lightbox, overlay, lightboxImg, closeBtn } = refs;
-//
-// function addImages() {
-//     galleryItems.forEach(({preview, description, original}) => {
-//         let liItem = document.createElement('li')
-//         let image = document.createElement('img');
-//         image.setAttribute('src', preview);
-//         image.setAttribute('alt', description);
-//         image.setAttribute('data-source', original);
-//         image.classList.add('gallery__image');
-//         gallery.appendChild(liItem);
-//         liItem.appendChild(image);
-//
-//
-//     })
-// }
-//
-// addImages();
-//
-// function openModal(event) {
-//     if (event.target.nodeName !== "IMG") {
-//         return
-//     }
-//     lightbox.classList.add('is-open');
-//     lightboxImg.setAttribute('src', event.target.getAttribute('data-source'));
-//     window.addEventListener('keydown', closeModal);
-//     closeBtn.addEventListener('click', closeModal);
-//     overlay.addEventListener('click', closeModal);
-//     window.addEventListener('keydown', nextPrev);
-//
-// }
-//
-// gallery.addEventListener('click', openModal);
-//
-// function closeModal (event) {
-//     if (event.target.nodeName === 'BUTTON' || event.code === 'Escape' || event.target.nodeName === 'DIV') {
-//         lightbox.classList.remove("is-open");
-//         lightboxImg.src = "";
-//         window.removeEventListener('keydown', closeModal);
-//         window.removeEventListener('keydown', nextPrev);
-//     }
-// }
-//
-//
-//
-//
-// function nextPrev(event) {
-//     if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
-//         let allImage = document.querySelectorAll('.gallery__image');
-//         let src = [];
-//         allImage.forEach((image, index) => {
-//             if (image.getAttribute('data-source') === lightboxImg.getAttribute('src')) {
-//                 if (event.code === 'ArrowRight') {
-//                     src.push(allImage[index +1].getAttribute('data-source'));
-//                 }
-//                 if (event.code === 'ArrowLeft') {
-//                     src.push(allImage[index -1].getAttribute('data-source'));
-//                 }
-//             }
-//         })
-//         lightboxImg.setAttribute('src', src.join(''))
-//     }
-// }
-
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 import galleryItems from "./gallery-items.js";
 
 
@@ -105,9 +29,6 @@ class Gallery {
         this.closeBtn = refs.closeBtn;
         this.originImg = [];
         this.index = 0
-        this.kayActionREF = this.keyAction.bind(this);
-        this.openModalREF = this.openModal.bind(this);
-        this.closeModalREF = this.closeModal.bind(this);
     }
 
 
@@ -136,35 +57,35 @@ class Gallery {
 
 
 
-    openModal (event) {
+    openModal  = (event) => {
         event.preventDefault();
         if (event.target.nodeName !== "IMG") return;
         this.index = this.originImg.indexOf(event.target.dataset.source);
         this.updateImg(this.index);
         this.lightbox.classList.add("is-open");
-        window.addEventListener('keydown', this.kayActionREF);
-        this.closeBtn.addEventListener('click', this.closeModalREF);
-        this.overlay.addEventListener('click', this.closeModalREF);
+        window.addEventListener('keydown', this.keyAction);
+        this.closeBtn.addEventListener('click', this.closeModal);
+        this.overlay.addEventListener('click', this.closeModal);
     }
 
     updateImg (index) {
         this.lightboxImg.src = this.originImg[index];
     }
 
-    closeModal () {
+    closeModal = () => {
         this.lightbox.classList.remove("is-open");
         this.lightboxImg.src = "";
         this.lightbox.alt = '';
-        window.removeEventListener('keydown', this.kayActionREF);
-        this.overlay.removeEventListener('click', this.closeModalREF);
-        this.closeBtn.removeEventListener('click', this.closeModalREF);
+        window.removeEventListener('keydown', this.keyAction);
+        this.overlay.removeEventListener('click', this.closeModal);
+        this.closeBtn.removeEventListener('click', this.closeModal);
     }
 
 
 
 
 
-    keyAction (event) {
+    keyAction = (event) => {
         if (event.code === 'Escape') {
             this.closeModal();
         }
@@ -180,7 +101,7 @@ class Gallery {
     }
 
     init () {
-        this.gallery.addEventListener('click', this.openModalREF);
+        this.gallery.addEventListener('click', this.openModal);
     }
 
 }
